@@ -1,9 +1,29 @@
 <template>
-  <div>
-      <span>First Name:</span><StandardInputField v-model="first_name"></StandardInputField>
-      <span>Last Name:</span><StandardInputField v-model="last_name"></StandardInputField>
-      <SubmitButton text="test" @click="createUser"></SubmitButton>
-  </div>
+  <v-form>
+    <v-container>
+      <v-layout row wrap>
+      
+        <v-flex xs12 sm6 md3>
+          <v-text-field
+            label="First Name"
+            placeholder="Jane"
+            v-model="first_name"
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex xs12 sm6 md3>
+          <v-text-field
+            label="Last Name"
+            placeholder="Doe"
+            v-model="last_name"
+          ></v-text-field>
+        </v-flex>    
+
+        <v-btn @click.native="createUser" color="success">Submit</v-btn>
+
+      </v-layout>
+    </v-container>
+  </v-form>
 </template>
 
 <script>
@@ -13,11 +33,14 @@ export default {
   data() {
     return {
       first_name: "",
-      last_name: ""
+      last_name: "",
+      submitted: false,
     };
   },
   methods: {
-    createUser() {}
+    createUser() {
+      
+    }
   }
 };
 </script>
