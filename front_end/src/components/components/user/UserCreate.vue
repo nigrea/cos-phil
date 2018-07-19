@@ -35,11 +35,29 @@ export default {
       first_name: "",
       last_name: "",
       submitted: false,
+      responseBody: null
     };
   },
   methods: {
     createUser() {
-      
+      this.$http
+        .post(this.baseUrl + "/user", {
+          firstName: this.first_name,
+          lastName: this.last_name
+        })
+        .then(
+          response => {
+            this.responseBody = response.body;
+          },
+          response => {
+            this.responseBody = response.body;
+          }
+        );
+    }
+  },
+  computed: {
+    baseUrl() {
+      return this.$store.state.apiBaseRoute;
     }
   }
 };
