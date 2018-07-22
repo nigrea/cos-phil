@@ -5,19 +5,25 @@
       
         <v-flex xs12 sm6 md3>
           <v-text-field
-            label="First Name"
-            placeholder="Jane"
-            v-model="first_name"
+            label="Username"            
+            v-model="username"
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 sm6 md3>
           <v-text-field
-            label="Last Name"
-            placeholder="Doe"
-            v-model="last_name"
+            label="Email"
+            v-model="email"
           ></v-text-field>
         </v-flex>    
+
+        <v-flex xs12 sm6 md3>
+          <v-text-field
+            label="Password"
+            type="password"
+            v-model="password"
+          ></v-text-field>
+        </v-flex>  
 
         <v-btn @click.native="createUser" color="success">Submit</v-btn>
 
@@ -32,8 +38,9 @@ export default {
   props: {},
   data() {
     return {
-      first_name: "",
-      last_name: "",
+      username: "",
+      email: "",
+      password: "",
       submitted: false,
       responseBody: null
     };
@@ -42,8 +49,9 @@ export default {
     createUser() {
       this.$http
         .post(this.baseUrl + "/user", {
-          firstName: this.first_name,
-          lastName: this.last_name
+          username: this.username,
+          email: this.email,
+          password: this.password
         })
         .then(
           response => {

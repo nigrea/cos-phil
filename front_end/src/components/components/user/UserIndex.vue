@@ -1,20 +1,38 @@
 <template>
   <div>
-      <span v-for="user in users" :key="user.id">{{user.first_name}} {{user.last_name}}</span>
+      <p v-for="user in users" :key="user.id">{{user.firstName}} {{user.lastName}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "UserCreate",
+  name: "UserIndex",
   props: {},
   data() {
     return {
-      users: []
+      users: [],
+      responseBody: null
     };
   },
+  mounted() {
+    this.loadUsers();
+  },
   methods: {
-    loadUsers() {}
+    loadUsers() {
+      this.$http.get(this.baseUrl + "/user").then(
+        response => {
+          this.users = response.body;
+        },
+        response => {
+          this.responseBody = response.body;
+        }
+      );
+    }
+  },
+  computed: {
+    baseUrl() {
+      return this.$store.state.apiBaseRoute;
+    }
   }
 };
 </script>

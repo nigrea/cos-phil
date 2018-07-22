@@ -10,9 +10,16 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-    firstName: { type: "string", required: true },
-    lastName: { type: "string", required: true }
+    id: { type: "string", columnName: "_id" },
+    username: {
+      type: "string"
+    },
+    email: {
+      type: "string"
+    },
+    password: {
+      type: "string"
+    }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
