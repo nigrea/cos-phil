@@ -24,7 +24,7 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
-  "POST /user": { action: "user/create" },
+  "POST /user": { action: "user/register" },
 
   "GET /user": { action: "user/index" },
 

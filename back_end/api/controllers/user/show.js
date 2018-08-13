@@ -1,27 +1,13 @@
 module.exports = {
+  friendlyName: "Show",
 
+  description: "Show user.",
 
-  friendlyName: 'Show',
+  inputs: {},
 
+  exits: {},
 
-  description: 'Show user.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
-
-  fn: async function (inputs, exits) {
-
-    return exits.success();
-
+  fn: async function(inputs, exits) {
+    return exits.success(inputs.me);
   }
-
-
 };

@@ -3,17 +3,42 @@ module.exports = {
 
   description: "Register user.",
 
-  inputs: {},
+  inputs: {
+    email: {
+      description: "The email of the user to create.",
+      type: "string",
+      required: true
+    },
+    password: {
+      description: "The password of the user to create.",
+      type: "string",
+      required: true
+    },
+    username: {
+      description: "The username of the user to create.",
+      type: "string",
+      required: true
+    }
+  },
 
-  exits: {},
+  exits: {
+    badRequest: {
+      description: "Invalid data",
+      responseType: "badRequest"
+    }
+  },
 
   fn: async function(inputs, exits) {
-    Console.log("inputs");
-    throw Exception;
-    asdad;
-    1 / 0;
-    let test = bla.bla.bla;
+    let oldUser = await User.findOne({
+      or: [{ email: inputs.email }, { username: inputs.username }]
+    });
 
-    return exits.success({ name: "test" });
+    if (oldUser) {
+      return exits.badRequest({ errors: ["User already exists"] });
+    }
+
+    let newUser = await User.create(inputs);
+
+    return exits.success(newUser);
   }
 };
